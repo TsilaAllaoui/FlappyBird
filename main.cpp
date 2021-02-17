@@ -4,5 +4,5 @@
 int main(int argc , char *argv[])
 {
     Game().play();
-    SDL_Delay(500000);
+    return 0;
 }
