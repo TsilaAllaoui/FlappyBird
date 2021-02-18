@@ -1,4 +1,3 @@
-#pragma once
 #include "pipe.h"
 
 Pipe::Pipe(SDL_Surface *pscreen)

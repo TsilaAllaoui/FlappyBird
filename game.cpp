@@ -5,7 +5,9 @@ Game::Game()
     screen = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
     flappy = new Bird(screen);
     pipe = new Pipe(screen);
-    bg = IMG_Load("./images/bg.bmp");
+    blit_pos.x = 0; blit_pos.y = 0;
+    blit_pos.h = HEIGHT; blit_pos.w = WIDTH;
+    bg = IMG_Load("./images/bg.png");
 }
 
 Game::~Game()
@@ -15,7 +17,10 @@ Game::~Game()
 
 void Game::show()
 {
-    SDL_BlitSurface(bg,NULL,screen,NULL);
+    blit_pos.x++;
+    if (blit_pos.x >= WIDTH*2)
+        blit_pos.x = 0;
+    SDL_BlitSurface(bg,&blit_pos,screen,NULL);
 }
 
 void Game::play()

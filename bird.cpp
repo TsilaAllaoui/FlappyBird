@@ -1,4 +1,5 @@
 #include "bird.h"
+#include "SDL_rotozoom.h"
 
 Bird::Bird(SDL_Surface * pscreen)
 {
@@ -27,10 +28,10 @@ void Bird::show()
 		blitpos.y = 0;
 	else
 		blitpos.y = 24;
-	SDL_Surface rotation;
-	rotation = SDL_rotozoomSurface(sprite, vit, 1,1);
+	SDL_Surface *rotation;
+	rotation = rotozoomSurface(sprite, 1, 1,1);
 	vit++;
-	SDL_BlitSurface(rotation, &blitpos, screen, &pos);
+	SDL_BlitSurface(sprite, &blitpos, screen, &pos);
 }
 
 void Bird::move()

@@ -7,6 +7,7 @@ class Game
 {
     private:
         SDL_Surface *screen, *bg;
+        SDL_Rect blit_pos;
         Bird *flappy;
         Pipe *pipe;
     public:
