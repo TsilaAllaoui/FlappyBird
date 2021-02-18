@@ -13,6 +13,7 @@ Bird::Bird(SDL_Surface * pscreen)
 	blitpos.w = 34;
 	velocity_y = 0;
 	anim_state = 0;
+	vit = 0;
 }
 
 Bird::~Bird()
@@ -26,7 +27,10 @@ void Bird::show()
 		blitpos.y = 0;
 	else
 		blitpos.y = 24;
-	SDL_BlitSurface(sprite, &blitpos, screen, &pos);
+	SDL_Surface rotation;
+	rotation = SDL_rotozoomSurface(sprite, vit, 1,1);
+	vit++;
+	SDL_BlitSurface(rotation, &blitpos, screen, &pos);
 }
 
 void Bird::move()
@@ -40,7 +44,7 @@ void Bird::move()
 		if (!flap_timer.get_state())
 		{
 			flap_timer.start();
-			if (flap_timer.get_state() && flap_timer.get_time() <= 50)
+			if (flap_timer.get_state() && flap_timer.get_time() <= 10 && pos.y > 50)
 			{
 				velocity_y -= GRAVITY * 1.75;
 				anim_state = 1;

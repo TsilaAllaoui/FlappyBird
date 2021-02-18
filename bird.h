@@ -6,7 +6,7 @@ class Bird
     private:
         SDL_Surface *sprite, *screen;
         SDL_Rect pos, blitpos;
-        float velocity_y;
+        float velocity_y, vit;
         int anim_state;
         Timer flap_timer, anim_timer;
     public:

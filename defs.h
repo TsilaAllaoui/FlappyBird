@@ -3,6 +3,7 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "timer.h"
+#include "SDL_rotozoom.h"
 
 #define HEIGHT 458
 #define WIDTH 240
