@@ -24,7 +24,8 @@ void Bird::show()
 {
 	if (anim_state == 0)
 		blitpos.y = 0;
-	else blitpos.y = 24;
+	else
+		blitpos.y = 24;
 	SDL_BlitSurface(sprite, &blitpos, screen, &pos);
 }
 
@@ -32,22 +33,29 @@ void Bird::move()
 {
 	SDL_Event event;
 	SDL_PollEvent(&event);
-	if (flap_timer.get_state() && flap_timer.get_time() >= 200)
-	flap_timer.stop();
 	if (event.type == SDL_KEYDOWN)
 	{
-		if(!flap_timer.get_state())
+		if (event.key.keysym.sym == SDLK_ESCAPE)
+		     exit(EXIT_SUCCESS);
+		if (!flap_timer.get_state())
+		{
 			flap_timer.start();
-		if (flap_timer.get_state() && flap_timer.get_time() < 200)
+			if (flap_timer.get_state() && flap_timer.get_time() <= 50)
 			{
-				velocity_y -= GRAVITY*1.75;
+				velocity_y -= GRAVITY * 1.75;
 				anim_state = 1;
 				anim_timer.start();
 			}
+		}
+		else
+		{
+			if (flap_timer.get_time() > 10)
+				flap_timer.stop();
+		}
 	}
-	if (anim_timer.get_time() > 300)
+	if (anim_timer.get_time() > 10)
 		anim_state = 0;
 	pos.y += GRAVITY + velocity_y;
 	if (velocity_y < 0)
-	velocity_y++;
+		velocity_y++;
 }

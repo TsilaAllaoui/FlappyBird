@@ -1,5 +1,4 @@
-#ifndef TIMER_H
-#define TIMER_H
+#pragma once
 
 #include <SDL/SDL.h>
 
@@ -17,5 +16,3 @@ class Timer
 	    bool get_state();
 };
 
-
-#endif
