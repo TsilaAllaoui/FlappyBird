@@ -42,20 +42,11 @@ void Bird::move()
 	{
 		if (event.key.keysym.sym == SDLK_ESCAPE)
 		     exit(EXIT_SUCCESS);
-		if (!flap_timer.get_state())
-		{
-			flap_timer.start();
-			if (flap_timer.get_state() && flap_timer.get_time() <= 10 && pos.y > 50)
-			{
-				velocity_y -= GRAVITY * 1.75;
-				anim_state = 1;
-				anim_timer.start();
-			}
-		}
 		else
 		{
-			if (flap_timer.get_time() > 10)
-				flap_timer.stop();
+			velocity_y -= GRAVITY * 1.75;
+			anim_state = 1;
+			anim_timer.start();
 		}
 	}
 	if (anim_timer.get_time() > 10)
@@ -63,4 +54,9 @@ void Bird::move()
 	pos.y += GRAVITY + velocity_y;
 	if (velocity_y < 0)
 		velocity_y++;
+}
+
+SDL_Rect Bird::get_pos()
+{
+	return pos;
 }

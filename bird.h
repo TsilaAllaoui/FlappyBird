@@ -13,5 +13,6 @@ class Bird
         Bird(SDL_Surface *pscreen);
         void show();
         void move();
+        SDL_Rect get_pos();
         ~Bird();
 };

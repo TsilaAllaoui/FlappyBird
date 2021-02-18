@@ -5,6 +5,8 @@
 #include "timer.h"
 #include "SDL_rotozoom.h"
 
+enum{UP, DOWN};
+
 #define HEIGHT 458
 #define WIDTH 240
 #define GRAVITY 9

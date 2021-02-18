@@ -9,7 +9,7 @@ class Game
         SDL_Surface *screen, *bg;
         SDL_Rect blit_pos;
         Bird *flappy;
-        Pipe *pipe;
+        Pipe *pipe_down, *pipe_up;
     public:
         Game();
         void show();

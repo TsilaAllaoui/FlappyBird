@@ -7,9 +7,11 @@ class Pipe
 	   SDL_Surface *sprite, *screen;
 	   SDL_Rect pos, blit_pos;
 	   bool onscreen;
+	   int type;
 	public:
-	   Pipe(SDL_Surface *pscreen);
+	   Pipe(SDL_Surface *pscreen,int type);
 	   ~Pipe();
 	   void show();
 	   void update();
+	   SDL_Rect get_pos();
 };
