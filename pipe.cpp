@@ -2,48 +2,40 @@
 
 Pipe::Pipe(SDL_Surface *pscreen,int ptype)
 {
-	sprite = IMG_Load("./images/pipe.png");
+	type = ptype;
+	if (type == UP)
+		sprite = IMG_Load("./images/pipe_up.bmp");
+	else if (type == DOWN)
+		sprite = IMG_Load("./images/pipe_down.bmp");
 	SDL_SetColorKey(sprite, SDL_SRCCOLORKEY, SDL_MapRGB(sprite->format, 255, 255, 255));
 	screen = pscreen;
 	pos.h = 200; pos.w = 40;
 	pos.x = WIDTH;
 	if (type == UP)
 		pos.y = 0;
-	if (type == DOWN)
+	else if (type == DOWN)
 		pos.y = HEIGHT - 200;
-	type = ptype;
-	blit_pos.h = 200; blit_pos.w = 40;
 	onscreen = true;
 }
 
 Pipe::~Pipe()
 {
+	pos.x = -900; pos.y = -900;
 	SDL_FreeSurface(sprite);
 }
 
 void Pipe::show()
 {
 	if (onscreen)
-	{
-		if (type == DOWN)
-		{
-			blit_pos.x = 0;
-			pos.y = HEIGHT - 200;
-		}
-		if (type == UP)
-		{
-			blit_pos.x = blit_pos.w;
-			pos.y = 0;
-		}
-	}
-	SDL_BlitSurface(sprite, &blit_pos, screen, &pos);
+		SDL_BlitSurface(sprite, NULL, screen, &pos);
 }
 
 void Pipe::update()
 {
-	if (pos.x + pos.w < 0)
-		onscreen = false;
 	pos.x--;
+	if (pos.x < -1)
+		pos.x -= 50;
+
 }
 
 SDL_Rect Pipe::get_pos()

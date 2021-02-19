@@ -8,7 +8,7 @@ Game::Game()
     pipe_up = new Pipe(screen, UP);
     blit_pos.x = 0; blit_pos.y = 0;
     blit_pos.h = HEIGHT; blit_pos.w = WIDTH;
-    bg = IMG_Load("./images/bg.png");
+    bg = IMG_Load("./images/bg.bmp");
 }
 
 Game::~Game()
@@ -45,9 +45,9 @@ void Game::update()
     SDL_Rect flappy_pos = flappy->get_pos(),
              piped_pos = pipe_down->get_pos(),
              pipeu_pos = pipe_up->get_pos();
-    if (flappy_pos.x + flappy_pos.w > piped_pos.x && 
-        flappy_pos.x < piped_pos.x + piped_pos.w &&
-        flappy_pos.y < piped_pos. y + piped_pos.h &&
-        flappy_pos.y > piped_pos.y)
-        SDL_Delay(10000);
+//    if (flappy_pos.x + flappy_pos.w > piped_pos.x &&
+//        flappy_pos.x < piped_pos.x + piped_pos.w &&
+//        flappy_pos.y < piped_pos. y + piped_pos.h &&
+//        flappy_pos.y > piped_pos.y)
+//        SDL_Delay(10000);
 }

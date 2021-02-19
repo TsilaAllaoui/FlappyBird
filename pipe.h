@@ -5,7 +5,7 @@ class Pipe
 {
 	private:
 	   SDL_Surface *sprite, *screen;
-	   SDL_Rect pos, blit_pos;
+	   SDL_Rect pos;
 	   bool onscreen;
 	   int type;
 	public:
