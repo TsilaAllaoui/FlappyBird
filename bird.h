@@ -12,7 +12,9 @@ class Bird
     public:
         Bird(SDL_Surface *pscreen);
         void show();
+        void show_start_screen();
         void move();
         SDL_Rect get_pos();
+        void set_xy(int x, int y);
         ~Bird();
 };
