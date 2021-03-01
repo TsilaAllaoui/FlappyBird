@@ -72,7 +72,7 @@ void Bird::move()
             exit(EXIT_SUCCESS);
         else
         {
-            velocity_y -= GRAVITY * 2;
+            velocity_y -= GRAVITY * 1.75;
             anim_timer.start();
         }
     }

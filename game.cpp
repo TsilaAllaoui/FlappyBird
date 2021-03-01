@@ -129,6 +129,8 @@ void Game::menu_display()
         SDL_PollEvent(&event);
         if (event.type == SDL_KEYDOWN)
         {
+            if (event.key.keysym.sym == SDLK_ESCAPE)
+                exit(0);
             pipe_down = new Pipe(screen, DOWN);
             pipe_up = new Pipe(screen, UP);
             running = true;

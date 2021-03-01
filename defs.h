@@ -11,5 +11,5 @@ enum{UP, DOWN, LEFT, RIGHT, CENTER};
 
 #define HEIGHT 458
 #define WIDTH 240
-#define GRAVITY 6
+#define GRAVITY 7
 
